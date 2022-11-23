@@ -1,14 +1,14 @@
 [
     {
         "category": "Tops",
-        "bg-img": "https://i.ibb.co/nmsRzPN/tops.jpg"
+        "image": "https://i.ibb.co/nmsRzPN/tops.jpg"
     },
     {
         "category": "Bottoms",
-        "bg-img": "https://i.ibb.co/9swLXKZ/bottoms.jpg"
+        "image": "https://i.ibb.co/9swLXKZ/bottoms.jpg"
     },
     {
         "category": "Shoes",
-        "bg-img": "https://i.ibb.co/H4qSvcq/shoes.jpg"
+        "image": "https://i.ibb.co/H4qSvcq/shoes.jpg"
     }
 ]

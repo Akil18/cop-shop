@@ -1,12 +1,12 @@
 import React from 'react';
 import Banner from './Banner';
-import Products from './Products';
+import Categories from './Categories/Categories';
 
 const Home = () => {
     return (
         <div className='lg:mx-20'>
             <Banner></Banner>
-            <Products></Products>
+            <Categories></Categories>
         </div>
     );
 };

@@ -12,20 +12,45 @@ const Signup = () => {
 
     const handleSignUp = (data) => {
         console.log(data);
+        let isSellerAccount = false;
+        if(data.sellerAccount){
+            isSellerAccount = true;
+        }
         setSignUpError('');
         createUser(data.email, data.password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
+                saveUser(data.name, data.email, isSellerAccount);
             })
             .catch(err => {
                 console.log(err);
                 setSignUpError(err.message);
             });
-    } 
+    }
+
+    const saveUser = (name, email, sellerAccount) => {
+        const user = {
+            name: name,
+            email: email,
+            sellerAccount
+        }
+        
+        fetch('http://localhost:5000/users', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(user)
+        })
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
+        })
+
+    }
 
     const handleChecked = () => {
-        console.log(seller);
         setSeller(!seller);
     }
 

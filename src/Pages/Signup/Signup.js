@@ -7,6 +7,7 @@ const Signup = () => {
     const {register, formState: {errors}, handleSubmit} = useForm();
     const {createUser} = useContext(AuthContext);   
     const [signUpError, setSignUpError] = useState('');
+    const [seller, setSeller] = useState(false);
 
 
     const handleSignUp = (data) => {
@@ -22,6 +23,11 @@ const Signup = () => {
                 setSignUpError(err.message);
             });
     } 
+
+    const handleChecked = () => {
+        console.log(seller);
+        setSeller(!seller);
+    }
 
     return (
         <div className='h-[540px] flex justify-center items-center'>
@@ -59,12 +65,19 @@ const Signup = () => {
                         type="password" className="input input-bordered w-full"/>
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
+
+                    <div className="form-control mt-4">
+                        <label className="label justify-start">
+                            <input {...register("sellerAccount")} type="radio" className="radio radio-secondary" onClick={handleChecked} checked={seller} />
+                            <span className="label-text ml-4 font-semibold">Create Seller Account</span>
+                        </label>
+                    </div>
                 
-                        <input type="submit" value="Sign Up" className="btn btn-accent my-4 text-base-100 w-full" />
-                        {signUpError && <p className='text-red-600'>{signUpError}</p>}
+                    <input type="submit" value="Sign Up" className="btn btn-accent my-4 text-base-100 w-full" />
+                    {signUpError && <p className='text-red-600'>{signUpError}</p>}
                 </form>
                 
-                    <p>Already have an account? <Link to='/login' className='text-secondary'>Please Login</Link></p>
+                <p>Already have an account? <Link to='/login' className='text-secondary'>Please Login</Link></p>
             </div>
         </div>
     );

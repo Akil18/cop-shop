@@ -20,19 +20,7 @@ const Products = () => {
                             category={category}
                         ></Category>)
                 }
-            {/* <div className="card h-80 shadow-xl image-full">
-                <figure><img className='h-fit w-full' src="https://i.ibb.co/9swLXKZ/bottoms.jpg" alt="Shoes" /></figure>
-                <div className="card-body flex justify-center items-center">
-                    <h2 className="card-title text-7xl">Bottoms</h2>
-                </div>
             </div>
-            <div className="card h-80 shadow-xl image-full">
-                <figure><img className='h-fit w-full' src="https://i.ibb.co/H4qSvcq/shoes.jpg" alt="Shoes" /></figure>
-                <div className="card-body flex justify-center items-center">
-                    <h2 className="card-title text-7xl">Shoes</h2>
-                </div>
-            </div> */}
-        </div>
         </section>
     );
 };

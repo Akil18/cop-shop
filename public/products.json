@@ -1,0 +1,86 @@
+[
+    {
+        "productName": "Supreme Box Logo Hoodie",
+        "category": "Tops",
+        "picture": "https://assets.supremenewyork.com/214987/zo/mvrgWWZhijM2.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Hugo Boss Grey Pants",
+        "category": "Tops",
+        "picture": "https://i.ibb.co/s6rtdjD/hugoboss.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Off-White x Nike Air Force 1 Moma Low",
+        "category": "Shoes",
+        "picture": "https://i.ibb.co/G7wXB0f/offwhitexnikeairforce1momalow.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Off-White x Air Jordan 1 Chicago",
+        "category": "Shoes",
+        "picture": "https://i.ibb.co/r0kpFGJ/offwhitexairjordan1-Chicago.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Yeezy Boost 350 V2 Triple Black",
+        "category": "Shoes",
+        "picture": "https://i.ibb.co/Mc3mTFJ/yeezy-Boost350-V2-Triple-Black.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Travis Scott x Air Jordan 1 Cactus Jack",
+        "category": "Shoes",
+        "picture": "https://i.ibb.co/Pwc5D93/travisscottxairjordan1-Cactus-Jack.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    },
+    {
+        "productName": "Virgil Abloh x Coverse Chuck Taylor 70",
+        "category": "Shoes",
+        "picture": "https://i.ibb.co/p4T2X0S/virgilablohxconversechucktaylor.jpg",
+        "location": "XYZ Street, 123",
+        "resalePrice": 0,
+        "originalPrice": 0,
+        "yearsOfUse": 0,
+        "postDate": "23/11/2022",
+        "sellerName": "Sally",
+        "sellerVerified": false
+    }
+]

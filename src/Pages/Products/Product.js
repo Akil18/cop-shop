@@ -2,7 +2,7 @@ import React from 'react';
 import { FaCheckCircle } from 'react-icons/fa';
 
 
-const Product = ({product}) => {
+const Product = ({product, setSelectedProduct}) => {
     const {picture, productName, location, resalePrice, originalPrice, yearsOfUse, postDate, sellerName, sellerVerified} = product;
 
     return (
@@ -12,7 +12,7 @@ const Product = ({product}) => {
                 <h2 className="card-title">{productName}</h2>
                 <p>location: {location}</p>
                 <p><strong>Resale Price: {resalePrice}</strong></p>
-                <p>Original Price: {resalePrice}</p>
+                <p>Original Price: {originalPrice}</p>
                 <p>Years of Use: {yearsOfUse}</p>
                 <p>Date Posted: {postDate}</p>
                 <p className='flex'>
@@ -22,7 +22,12 @@ const Product = ({product}) => {
                     }
                 </p>
                 <div className="card-actions justify-center">
-                    <button className="btn btn-primary w-full">Book Now</button>
+                <label 
+                    onClick={() => setSelectedProduct(product)} 
+                    htmlFor="booking-modal"
+                    className="btn btn-primary w-full text-base-100">
+                        Book Now
+                </label>
                 </div>
             </div>
         </div>

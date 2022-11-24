@@ -1,13 +1,16 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Category from './Category';
 
 const Products = () => {
     const [categories, setCategories] = useState([]);
-
+    
     useEffect(() => {
-        fetch('http://localhost:5000/categories')
-            .then(res => res.json())
-            .then(data => setCategories(data))
+        axios.get(`http://localhost:5000/categories`)
+            .then(res => {
+                const data = res.data;
+                setCategories(data)
+            })
     }, []);
 
     return (

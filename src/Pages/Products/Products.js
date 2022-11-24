@@ -1,7 +1,8 @@
 import { useQuery } from '@tanstack/react-query';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../../Components/BookingModal';
+import Loading from '../../Shared/Loading/Loading';
 import Product from './Product';
 
 const Products = () => {
@@ -9,7 +10,7 @@ const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const category = useLoaderData();
 
-    const {data:categorisedProducts = [], refetch, isLoading} = useQuery({
+    const {data:categorisedProducts = [], isLoading} = useQuery({
         queryKey: ['categorisedProducts'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/products/${category._id}`);
@@ -18,13 +19,9 @@ const Products = () => {
         }
     });
 
-    // useEffect(() => {
-    //     axios.get(`http://localhost:5000/products/${category._id}`)
-    //         .then(res => {
-    //             const data = res.data;
-    //             setCategorisedProducts(data)
-    //         })
-    // }, [category._id]);
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <section>

@@ -5,7 +5,7 @@ import { AuthContext } from '../../Contexts/AuthProvider';
 
 const Login = () => {
     const {register, formState: {errors}, handleSubmit} = useForm();
-    const {signIn} = useContext(AuthContext);
+    const {signIn, googleSignIn} = useContext(AuthContext);
     const [loginError, setLoginError] = useState('');
 
     const handleLogin = (data) => {
@@ -23,7 +23,15 @@ const Login = () => {
     }
 
     const handleGoogleLogin = () => {
-        console.log('Google Login');
+        googleSignIn()
+            .then(res => {
+                const user = res.user;
+                console.log(user);
+            })
+            .catch(err => {
+                console.log(err);
+                setLoginError(err.message);
+            });
     }
     
     return (
@@ -59,7 +67,7 @@ const Login = () => {
                         }
                 </form>
                 
-                    <p>New to Doctor's Portal? <Link to='/signup' className='text-secondary'>Create an Account</Link></p>
+                    <p>Don't have an account? <Link to='/signup' className='text-secondary'>Create an Account</Link></p>
                     <div className='divider'>OR</div>
                     <button onClick={handleGoogleLogin} className='btn btn-outline w-full mt-4'>CONTINUE WITH GOOGLE</button>
             </div>

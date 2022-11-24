@@ -1,5 +1,4 @@
 import { useQuery } from '@tanstack/react-query';
-import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { useLoaderData } from 'react-router-dom';
 import BookingModal from '../../Components/BookingModal';

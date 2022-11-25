@@ -1,27 +1,35 @@
 import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Contexts/AuthProvider';
+import useToken from '../../Hooks/useToken';
 
 const Signup = () => {
     const {register, formState: {errors}, handleSubmit} = useForm();
     const {createUser} = useContext(AuthContext);   
     const [signUpError, setSignUpError] = useState('');
     const [seller, setSeller] = useState(false);
+    const [createdUserEmail, setCreatedUserEmail] = useState('');
+    const [token] = useToken(createdUserEmail);
+    const navigate = useNavigate();
 
+    if(token){
+        navigate('/');
+    }
 
     const handleSignUp = (data) => {
         console.log(data);
-        let isSellerAccount = false;
-        if(data.sellerAccount){
-            isSellerAccount = true;
+        let role = 'buyer';
+        if(data.sellerAccount === 'on'){
+            role = 'seller';
         }
+        console.log(role);
         setSignUpError('');
         createUser(data.email, data.password)
             .then(res => {
                 const user = res.user;
                 console.log(user);
-                saveUser(data.name, data.email, isSellerAccount);
+                saveUser(data.name, data.email, role);
             })
             .catch(err => {
                 console.log(err);
@@ -29,11 +37,11 @@ const Signup = () => {
             });
     }
 
-    const saveUser = (name, email, sellerAccount) => {
+    const saveUser = (name, email, role) => {
         const user = {
             name: name,
             email: email,
-            sellerAccount
+            role: role
         }
         
         fetch('http://localhost:5000/users', {
@@ -46,6 +54,7 @@ const Signup = () => {
         .then(res => res.json())
         .then(data => {
             console.log(data);
+            setCreatedUserEmail(email);
         })
 
     }

@@ -10,7 +10,7 @@ const Products = () => {
     const [selectedProduct, setSelectedProduct] = useState(null);
     const category = useLoaderData();
 
-    const {data:categorisedProducts = [], isLoading} = useQuery({
+    const {data:categorisedProducts = [], refetch, isLoading} = useQuery({
         queryKey: ['categorisedProducts'],
         queryFn: async () => {
             const res = await fetch(`http://localhost:5000/products/${category._id}`);
@@ -41,6 +41,7 @@ const Products = () => {
                 selectedProduct && <BookingModal
                     setSelectedProduct={setSelectedProduct}
                     selectedProduct={selectedProduct}
+                    refetch={refetch}
                 ></BookingModal>
             }
         </section>

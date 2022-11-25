@@ -74,7 +74,7 @@ const Login = () => {
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
                         
-                        <input type="submit" className="btn btn-accent my-4 text-base-100 w-full" />
+                        <input type="submit" value="Login" className="btn btn-accent my-4 text-base-100 w-full" />
                         {
                             loginError && <p className='text-red-600'>{loginError}</p>
                         }

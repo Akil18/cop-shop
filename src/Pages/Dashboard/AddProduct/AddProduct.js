@@ -1,11 +1,64 @@
-import React from 'react';
+import { format } from 'date-fns/esm';
+import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
+import toast from 'react-hot-toast';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../../Contexts/AuthProvider';
 
 const AddProduct = () => {
+    const {user} = useContext(AuthContext);    
     const {register, handleSubmit} = useForm();
+    const navigate = useNavigate();
 
     const onSubmit = (data) => {
-        console.log(data);
+        const postDate = format(new Date(), 'dd/MM/yyyy');
+        const email = user.email;
+        const sellerName = user.displayName;
+        const productName = data.productName;
+        const category = data.category;
+        const originalPrice = data.originalPrice;
+        const price = data.price;
+        const picture = data.photoUrl;
+        const condition = data.condition;
+        const mobile = data.mobile;
+        const location = data.location;
+        const description = data.description;
+        const yearOfPurchase = data.yearOfPurchase;
+        const yearsOfUse = data.yearsOfUse;
+
+        const product = {
+            postDate,
+            email,
+            sellerName,
+            productName,
+            category,
+            originalPrice,
+            price,
+            picture,
+            condition,
+            mobile,
+            location,
+            description,
+            yearOfPurchase,
+            yearsOfUse
+        }
+        console.log(product);
+
+        fetch('http://localhost:5000/products', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(product)
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(data.acknowledged){
+                toast.success('Product Added Successfully');
+                navigate('/dashboard/myproducts');
+            }
+        })
+
     }
 
     return (
@@ -17,8 +70,21 @@ const AddProduct = () => {
                 <label className="label"><span className="label-text">Product Name</span></label>
                 <input {...register("productName")} type="text" className="input input-bordered w-full" />
                 
+                <label className="label"><span className="label-text">Category</span></label>
+                <select {...register("category")} className="select select-bordered w-full">
+                    <option value="Tops">Tops</option>
+                    <option value="Bottoms">Bottoms</option>
+                    <option value="Shoes">Shoes</option>
+                </select>
+
+                <label className="label"><span className="label-text">Original Price</span></label>
+                <input {...register("originalPrice")} type="text" className="input input-bordered w-full" />
+
                 <label className="label"><span className="label-text">Price</span></label>
                 <input {...register("price")} type="text" className="input input-bordered w-full" />
+
+                <label className="label"><span className="label-text">Photo URL</span></label>
+                <input {...register("photoUrl")} type="text" className="input input-bordered w-full" />
                 
                 <label className="label"><span className="label-text">Condition</span></label>
                 <select {...register("condition")} className="select select-bordered w-full">
@@ -38,6 +104,9 @@ const AddProduct = () => {
 
                 <label className="label"><span className="label-text">Year of Purchase</span></label>
                 <input {...register("yearOfPurchase")} type="text" className="input input-bordered w-full" />
+
+                <label className="label"><span className="label-text">Years of Use</span></label>
+                <input {...register("yearsOfUse")} type="text" className="input input-bordered w-full" />
                 
                 <div className='flex justify-center mt-4'>
                     <input type="submit" className="btn btn-accent text-base-100 w-full" />

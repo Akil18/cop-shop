@@ -22,7 +22,7 @@ const Product = ({product, setSelectedProduct}) => {
 
     return (
         <div className="card bg-base-100 shadow-xl">
-            <figure><img src={picture} alt="Shoes" /></figure>
+            <figure><img src={picture} alt={productName} /></figure>
             <div className="card-body">
                 <h2 className="card-title">{productName}</h2>
                 <p>location: {location}</p>

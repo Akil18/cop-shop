@@ -9,11 +9,12 @@ const Products = () => {
     // const [categorisedProducts, setCategorisedProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const category = useLoaderData();
+    console.log(category);
 
     const {data:categorisedProducts = [], refetch, isLoading} = useQuery({
         queryKey: ['categorisedProducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products/${category._id}`);
+            const res = await fetch(`http://localhost:5000/products/${category.category}`);
             const data = await res.json();
             return data;
         }

@@ -6,7 +6,7 @@ const AllSellers = () => {
     const {data: users = [], refetch, isLoading} = useQuery({
         queryKey: ['users'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/sellers');
+            const res = await fetch('https://used-products-resale-market-server-side.vercel.app/sellers');
             const data = await res.json();
             return data;
         }
@@ -17,7 +17,7 @@ const AllSellers = () => {
     }
 
     const handleVerify = (id) => {
-        fetch(`http://localhost:5000/admin/users/${id}`, {
+        fetch(`https://used-products-resale-market-server-side.vercel.app/admin/users/${id}`, {
             method: 'PUT'
         })
             .then(res => res.json())
@@ -30,7 +30,7 @@ const AllSellers = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/admin/users/${id}`, {
+        fetch(`https://used-products-resale-market-server-side.vercel.app/admin/users/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())
@@ -43,7 +43,7 @@ const AllSellers = () => {
     }
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <h2 className='text-3xl text-center font-semibold my-8'>All Sellers</h2>
 
             <div className="overflow-x-auto mx-20 mb-20">
@@ -66,7 +66,7 @@ const AllSellers = () => {
                                     <td>{user?.email}</td>
                                     <td>
                                         {   
-                                            user &&
+                                            !user?.verifiedUser &&
                                             <button onClick={() => handleVerify(user._id)} className='btn btn-xs bg-green-600 text-base-100'>Verify Seller</button>
                                         }
                                     </td>

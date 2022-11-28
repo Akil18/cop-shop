@@ -53,7 +53,7 @@ const Signup = () => {
             role: role
         }
         
-        fetch('http://localhost:5000/users', {
+        fetch('https://used-products-resale-market-server-side.vercel.app/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

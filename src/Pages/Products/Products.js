@@ -6,7 +6,6 @@ import Loading from '../../Shared/Loading/Loading';
 import Product from './Product';
 
 const Products = () => {
-    // const [categorisedProducts, setCategorisedProducts] = useState([]);
     const [selectedProduct, setSelectedProduct] = useState(null);
     const category = useLoaderData();
     console.log(category);
@@ -14,7 +13,7 @@ const Products = () => {
     const {data:categorisedProducts = [], refetch, isLoading} = useQuery({
         queryKey: ['categorisedProducts'],
         queryFn: async () => {
-            const res = await fetch(`http://localhost:5000/products/${category.category}`);
+            const res = await fetch(`https://used-products-resale-market-server-side.vercel.app/products/${category.category}`);
             const data = await res.json();
             return data;
         }

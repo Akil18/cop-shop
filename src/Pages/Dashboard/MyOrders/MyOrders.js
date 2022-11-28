@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Contexts/AuthProvider';
 import Loading from '../../../Shared/Loading/Loading';
 
@@ -9,7 +10,7 @@ const MyOrders = () => {
     const {data: orders = [], refetch, isLoading} = useQuery({
         queryKey: ['orders'],
         queryFn: async() => {
-            const res = await fetch(`http://localhost:5000/orders/${user?.email}`);
+            const res = await fetch(`https://used-products-resale-market-server-side.vercel.app/orders/${user?.email}`);
             const data = await res.json();
             return data;
         }
@@ -24,7 +25,7 @@ const MyOrders = () => {
     }
 
     return (
-        <div>
+        <div className='min-h-screen'>
             <h2 className='text-3xl text-center font-semibold my-8'>My Orders</h2>
 
             <div className="overflow-x-auto mx-20 mb-20">
@@ -57,7 +58,9 @@ const MyOrders = () => {
                                             order?.paid ?
                                             <p className='text-green-600 font-bold'>Paid</p>
                                             : 
-                                            <button onClick={() => handlePayment(order._id)} className='btn btn-xs bg-green-300 text-base-100'>Pay</button> 
+                                            <Link to={`/dashboard/payment/${order?._id}`}>
+                                            <button onClick={() => handlePayment(order._id)} className='btn btn-xs bg-green-300 text-base-100'>Pay</button>
+                                            </Link> 
                                         }
                                     </td>
                                 </tr>

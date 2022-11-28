@@ -23,7 +23,7 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
             meetingLocation
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://used-products-resale-market-server-side.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
@@ -39,7 +39,10 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
                 refetch();
             }
             else{
+                form.reset();
+                setSelectedProduct(null);
                 toast.error(data.message);
+                refetch();
             }
             
         })

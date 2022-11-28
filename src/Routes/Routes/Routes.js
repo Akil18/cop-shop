@@ -18,6 +18,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
 import pageNotFound from '../../Assets/404.png';
 import ReportToAdmin from "../../Pages/Dashboard/ReportToAdmin/ReportToAdmin";
+import Payment from "../../Pages/Dashboard/Payment/Payment";
 
 const router = createBrowserRouter([
     {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
             },
             {
                 path: "/products/:id",
-                loader: ({ params }) => fetch(`http://localhost:5000/categories/${params.id}`),
+                loader: ({ params }) => fetch(`https://used-products-resale-market-server-side.vercel.app/categories/${params.id}`),
                 element: <Products></Products>
             },
             {
@@ -78,6 +79,11 @@ const router = createBrowserRouter([
             {
                 path: "/dashboard/myorders",
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
+            },
+            {
+                path: "/dashboard/payment/:id",
+
+                element: <BuyerRoute><Payment></Payment></BuyerRoute>
             }
         ]
     },

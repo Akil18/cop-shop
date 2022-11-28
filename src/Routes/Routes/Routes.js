@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { createBrowserRouter, Link } from "react-router-dom";
 import DashboardLayout from "../../Layouts/DashboardLayout";
 import Main from "../../Layouts/Main";
 import Blogs from "../../Pages/Blogs/Blogs";
@@ -16,7 +16,8 @@ import AdminRoute from "../AdminRoute/AdminRoute";
 import BuyerRoute from "../BuyerRoute/BuyerRoute";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import SellerRoute from "../SellerRoute/SellerRoute";
-
+import pageNotFound from '../../Assets/404.png';
+import ReportToAdmin from "../../Pages/Dashboard/ReportToAdmin/ReportToAdmin";
 
 const router = createBrowserRouter([
     {
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
                 element: <AdminRoute><AllSellers></AllSellers></AdminRoute>
             },
             {
+                path: "/dashboard/reporteditems",
+                element: <AdminRoute><ReportToAdmin></ReportToAdmin></AdminRoute>
+            },
+            {
                 path: "/dashboard/addproduct",
                 element: <SellerRoute><AddProduct></AddProduct></SellerRoute>
             },
@@ -75,6 +80,13 @@ const router = createBrowserRouter([
                 element: <BuyerRoute><MyOrders></MyOrders></BuyerRoute>
             }
         ]
+    },
+    {
+        path: "*",
+        element: <div className="px-72 pt-4">
+            <img className="" src={pageNotFound} alt="404" />
+            <p className="text-xl text-center">Go back to <Link className="text-blue-600" to='/'>Home</Link></p>
+        </div>
     }
 ])
 

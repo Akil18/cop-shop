@@ -1,12 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import Loading from '../../Shared/Loading/Loading';
 import Advertise from './Advertise/Advertise';
 import Banner from './Banner';
 import Categories from './Categories/Categories';
 
 const Home = () => {
 
-    const {data: products = []} = useQuery({
+    const {data: products = [], isLoading} = useQuery({
         queryKey: ['products'],
         queryFn: async() => {
             const res = await fetch('http://localhost:5000/advertisedproducts');
@@ -15,11 +16,17 @@ const Home = () => {
         }
     })
 
+    if(isLoading){
+        return <Loading></Loading>
+    }
+
     return (
         <div className='lg:mx-20'>
             <Banner></Banner>
             <Categories></Categories>
-            <Advertise products={products}></Advertise>
+            {
+                products.length > 0 && <Advertise products={products}></Advertise>
+            }
         </div>
     );
 };

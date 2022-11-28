@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
     const {user} = useContext(AuthContext);
-    const {productName, resalePrice, picture} = selectedProduct;
+    const {productName, price, picture} = selectedProduct;
 
     console.log('inside modal',selectedProduct);
 
@@ -18,7 +18,7 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
             buyerEmail: user?.email,
             title: productName,
             image: picture,
-            price: resalePrice,
+            price,
             phone,
             meetingLocation
         }
@@ -56,7 +56,7 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
                         <input type="text" value={user?.displayName} className="input max-w-full" disabled />
                         <input type="text" value={user?.email} className="input max-w-full" disabled />
                         <input type="text" value={productName} className="input max-w-full" disabled />
-                        <input type="text" value={resalePrice} className="input max-w-full" disabled />
+                        <input type="text" value={price} className="input max-w-full" disabled />
                         <input  name='phone' type="text" placeholder="Phone Number" className="input input-bordered max-w-full" />
                         <input  name='meetingLocation' type="text" placeholder="Meeting Location" className="input input-bordered max-w-full" />
                         <input type="submit" value="Submit" className="btn btn-secondary text-base-100 max-w-full" />

@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
 
-const useToken = email => {
+const useToken = (email) => {
     const [token, setToken] = useState('');
+    console.log('inside useToken', email);
     
     useEffect(() => {
         if(email){

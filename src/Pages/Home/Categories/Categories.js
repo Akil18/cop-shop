@@ -1,17 +1,24 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import Loading from '../../../Shared/Loading/Loading';
 import Category from './Category';
 
 const Products = () => {
     const [categories, setCategories] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
         axios.get(`http://localhost:5000/categories`)
             .then(res => {
+                setIsLoading(false);
                 const data = res.data;
                 setCategories(data)
             })
     }, []);
+
+    if(isLoading){
+        return <Loading></Loading>
+    }
 
     return (
         <section className='my-32'>

@@ -8,7 +8,7 @@ const Products = () => {
     const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
-        axios.get(`https://used-products-resale-market-server-side.vercel.app/categories`)
+        axios.get(`http://localhost:5000/categories`)
             .then(res => {
                 setIsLoading(false);
                 const data = res.data;

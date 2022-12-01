@@ -9,7 +9,7 @@ const MyProducts = () => {
     const {data: products = [], refetch, isLoading} = useQuery({
         queryKey: ['products'],
         queryFn: async() => {
-            const res = await fetch(`https://used-products-resale-market-server-side.vercel.app/products?email=${user.email}`);
+            const res = await fetch(`http://localhost:5000/products?email=${user.email}`);
             const data = await res.json();
             return data;
         }
@@ -20,7 +20,7 @@ const MyProducts = () => {
     }
 
     const handleAdvertise = id => {
-        fetch(`https://used-products-resale-market-server-side.vercel.app/products/${id}`, {
+        fetch(`http://localhost:5000/products/${id}`, {
             method: 'PUT',
             headers: {
                 authorization: `Bearer ${localStorage.getItem('token')}`
@@ -55,7 +55,14 @@ const MyProducts = () => {
                                     <th>{idx+1}</th>
                                     <td>{product.productName}</td>
                                     <td>{product.price}</td>
-                                    <td>available/sold</td>
+                                    <td>
+                                        {
+                                            product?.sold ?
+                                            <p className='text-red-600 font-bold'>Sold</p>
+                                            :
+                                            <p className='text-green-600 font-bold'>Available</p>
+                                        }
+                                    </td>
                                     <td>
                                         {
                                             product?.advertise !== true && 

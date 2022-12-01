@@ -54,7 +54,7 @@ const Login = () => {
             role: role
         }
         
-        fetch('https://used-products-resale-market-server-side.vercel.app/users', {
+        fetch('http://localhost:5000/users', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -92,7 +92,6 @@ const Login = () => {
                                     })
                                 } 
                         type="password" className="input input-bordered w-full"/>
-                        <label className="label"><span className="label-text-alt">Forgot Password?</span></label>
                         {errors.password && <p className='text-red-600'>{errors.password?.message}</p>}
                     </div>
                         

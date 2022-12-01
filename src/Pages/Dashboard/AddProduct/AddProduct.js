@@ -44,7 +44,7 @@ const AddProduct = () => {
         }
         console.log(product);
 
-        fetch('https://used-products-resale-market-server-side.vercel.app/products', {
+        fetch('http://localhost:5000/products', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -81,7 +81,7 @@ const AddProduct = () => {
                 <input {...register("originalPrice")} type="text" className="input input-bordered w-full" />
 
                 <label className="label"><span className="label-text">Price</span></label>
-                <input {...register("price")} type="text" className="input input-bordered w-full" />
+                <input {...register("price")} type="number" className="input input-bordered w-full" />
 
                 <label className="label"><span className="label-text">Photo URL</span></label>
                 <input {...register("photoUrl")} type="text" className="input input-bordered w-full" />

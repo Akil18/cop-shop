@@ -4,7 +4,7 @@ import toast from 'react-hot-toast';
 
 const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
     const {user} = useContext(AuthContext);
-    const {productName, price, picture} = selectedProduct;
+    const {_id, productName, price, picture} = selectedProduct;
 
     console.log('inside modal',selectedProduct);
 
@@ -14,8 +14,9 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
         const phone = form.phone.value;
         const meetingLocation = form.meetingLocation.value;
 
-        const booking = {
+        const order = {
             buyerEmail: user?.email,
+            productId: _id,
             title: productName,
             image: picture,
             price,
@@ -23,12 +24,12 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
             meetingLocation
         }
 
-        fetch('https://used-products-resale-market-server-side.vercel.app/orders', {
+        fetch('http://localhost:5000/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'
             },
-            body: JSON.stringify(booking)
+            body: JSON.stringify(order)
         })
         .then(res => res.json())
         .then(data => {

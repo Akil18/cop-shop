@@ -22,7 +22,7 @@ const Product = ({product, setSelectedProduct}) => {
     };
 
     useEffect(() => {
-        fetch(`http://localhost:5000/users/${email}`)
+        fetch(`https://used-products-resale-market-server-side.vercel.app/users/${email}`)
             .then(res => res.json())
             .then(data => {
                 setIsSellerVerified(data.verifiedUser);
@@ -30,7 +30,7 @@ const Product = ({product, setSelectedProduct}) => {
     }, [email]);
 
     const handleReportToAdmin = (id) => {
-        fetch(`http://localhost:5000/reportItem/${id}`, {
+        fetch(`https://used-products-resale-market-server-side.vercel.app/reportItem/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'

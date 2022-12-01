@@ -24,7 +24,7 @@ const BookingModal = ({selectedProduct, setSelectedProduct, refetch}) => {
             meetingLocation
         }
 
-        fetch('http://localhost:5000/orders', {
+        fetch('https://used-products-resale-market-server-side.vercel.app/orders', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json'

@@ -12,7 +12,7 @@ const CheckoutForm = ({order}) => {
     const {price, buyerEmail} = order;
 
     useEffect(() => {
-        fetch('http://localhost:5000/create-payment-intent', {
+        fetch('https://used-products-resale-market-server-side.vercel.app/create-payment-intent', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,7 +79,7 @@ const CheckoutForm = ({order}) => {
                 paymentId: paymentIntent.id,
             }
             
-            fetch('http://localhost:5000/payments', {
+            fetch('https://used-products-resale-market-server-side.vercel.app/payments', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

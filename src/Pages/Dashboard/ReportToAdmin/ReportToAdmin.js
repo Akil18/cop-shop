@@ -7,7 +7,7 @@ const ReportToAdmin = () => {
     const {data: items = [], refetch, isLoading} = useQuery({
         queryKey: ['items'],
         queryFn: async() => {
-            const res = await fetch('http://localhost:5000/reportedItems');
+            const res = await fetch('https://used-products-resale-market-server-side.vercel.app/reportedItems');
             const data = await res.json();
             return data;
         }
@@ -18,7 +18,7 @@ const ReportToAdmin = () => {
     }
 
     const handleDelete = (id) => {
-        fetch(`http://localhost:5000/reportedItems/${id}`, {
+        fetch(`https://used-products-resale-market-server-side.vercel.app/reportedItems/${id}`, {
             method: 'DELETE'
         })
             .then(res => res.json())

@@ -41,9 +41,9 @@ const Navbar = () => {
             <div className="navbar-end">
                 {
                     user?.uid ?
-                    <button onClick={handleLogout} className='btn btn-secondary'>LogOut</button>
+                    <button onClick={handleLogout} className='btn btn-secondary rounded-none'>LogOut</button>
                     :
-                    <Link to='/login' className="btn btn-secondary">Login</Link>
+                    <Link to='/login' className="btn btn-secondary rounded-none">Login</Link>
                 }
             </div>
         </div>

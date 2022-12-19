@@ -4,6 +4,7 @@ import Loading from '../../Shared/Loading/Loading';
 import Advertise from './Advertise/Advertise';
 import Banner from './Banner';
 import Categories from './Categories/Categories';
+import ContactForm from './ContactForm';
 
 const Home = () => {
 
@@ -27,6 +28,7 @@ const Home = () => {
             {
                 products.length > 0 && <Advertise products={products}></Advertise>
             }
+            <ContactForm></ContactForm>
         </div>
     );
 };
